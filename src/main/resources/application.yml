@@ -1,0 +1,11 @@
+solace:
+  java:
+    host: tcps://mrnzmkh0ufgnb.messaging.solace.cloud:55443
+    msg-vpn: poc
+    client-name: springboot-javaapi-client
+    client-username: solace-cloud-client 
+    client-password: e6r6a8ufj56v9dimfp6tgdectt
+
+
+
+ 

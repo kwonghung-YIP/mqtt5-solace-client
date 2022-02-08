@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.6</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>hung-poc</groupId>
+	<artifactId>solace-client-poc</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>solace-client-poc</name>
+	<description>POC for push message to Solace via SMF protocol</description>
+	<properties>
+		<java.version>11</java.version>
+		<solace-spring-boot.version>1.1.0</solace-spring-boot.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.solace.spring.boot</groupId>
+			<artifactId>solace-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-json</artifactId>
+		</dependency>	
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.solace.spring.boot</groupId>
+				<artifactId>solace-spring-boot-bom</artifactId>
+				<version>${solace-spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.1.4</version>
+				<configuration>
+					<to>
+						<image>docker.io/kwonghung/mqtt-loadtest-client</image>
+					</to>
+					<!-- <container>
+						<jvmFlag>-Duser.timezone=GMT+08</jvmFlag>
+					</container> -->
+				</configuration>
+			</plugin>				
+		</plugins>
+	</build>
+
+</project>
